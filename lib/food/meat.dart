@@ -1,6 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
+//　食材のリスト
 List<String> _foodListMeat = [
   '鶏もも肉',
   '鶏むね肉',
@@ -26,6 +27,7 @@ List<String> _foodListMeat = [
   "V"
 ];
 
+//　カウンターのimage
 List<String> _meatImageList = [
   "lomenu-2-1-tori-momo.png",
   "lomenu-2-2-tori-mune.png",
@@ -42,7 +44,6 @@ List<String> _meatImageList = [
   "lomenu-2-13-usi-hire.png",
   "lomenu-2-14-hikiniku-chicken.png",
   "lomenu-2-15-hikiniku-pork.png",
-
   "lomenu-1-6-piman.png",
   "lomenu-1-6-piman.png",
   "lomenu-1-6-piman.png",
@@ -64,6 +65,7 @@ class _MeatformState extends State<Meatform> {
 
   String ok = "no";
 
+  //　食材の個数のリスト
   List<int> _MeatNumber = [
     0,
     0,
@@ -135,7 +137,7 @@ class _MeatformState extends State<Meatform> {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 color: Colors.white,
-                height: 50,
+                height: 60,
                 child: Card(
                   elevation: 15,
                   child: Column(
@@ -184,12 +186,12 @@ class _MeatformState extends State<Meatform> {
                                                 },
                                                 icon: const Icon(Icons.remove,
                                                     color: Colors.red)),
-                                            Stack(
-                                              children: [
-                                                Text(_MeatNumber[index]
-                                                    .toString()),
-                                              ],
-                                            ),
+                                            // Stack(
+                                            //   children: [
+                                            //     Text(_MeatNumber[index]
+                                            //         .toString()),
+                                            //   ],
+                                            // ),
                                             IconButton(
                                                 onPressed: () {
                                                   _setPlefItem() async {
@@ -221,6 +223,10 @@ class _MeatformState extends State<Meatform> {
                               )
                             ],
                           )),
+                      Expanded(
+                        flex: 1,
+                        child: Text(_MeatNumber[index].toString()),
+                      ),
                       Expanded(
                           flex: 1,
                           child: Container(

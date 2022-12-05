@@ -27,6 +27,7 @@ List<String> testList = [
   "V"
 ];
 
+//　カウンターのimage
 List<String> _vegetableImageList = [
   "lomenu-1-1-onion.jpeg",
   "lomenu-1-2-potato.jpeg",
@@ -140,7 +141,7 @@ class _FoodformState extends State<Foodform> {
             itemCount: testList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                height: 50,
+                height: 60,
                 decoration: const BoxDecoration(
                   // boxShadow: [
                   //   BoxShadow(
@@ -198,11 +199,11 @@ class _FoodformState extends State<Foodform> {
                                                 },
                                                 icon: const Icon(Icons.remove,
                                                     color: Colors.red)),
-                                            Stack(
-                                              children: [
-                                                Text(kosu[index].toString()),
-                                              ],
-                                            ),
+                                            // Stack(
+                                            //   children: [
+                                            //     Text(kosu[index].toString()),
+                                            //   ],
+                                            // ),
                                             IconButton(
                                                 onPressed: () {
                                                   _setPlefItem() async {
@@ -232,6 +233,7 @@ class _FoodformState extends State<Foodform> {
                               )
                             ],
                           )),
+                      Expanded(flex: 1,child: Text(kosu[index].toString())),
                       Expanded(
                           flex: 1,
                           child: Container(

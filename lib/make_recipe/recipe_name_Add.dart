@@ -25,6 +25,7 @@ class _RecipeNameState extends State<RecipeName> {
   // File? _imageFile;
   Image? _img;
   String _imgPath = "";
+  File? _imageFile;
   Text? _text;
   late String downloadUrl = "";
 
@@ -34,8 +35,8 @@ class _RecipeNameState extends State<RecipeName> {
       XFile? pickerFile =
           await ImagePicker().pickImage(source: ImageSource.gallery);
 
-      // _imageFile = File(pickerFile!.path);
       File file = File(pickerFile!.path);
+      _imageFile = File(pickerFile.path);
 
       RegExp exp = RegExp('/((?:.(?!/))+\$)');
       String imageId = exp.firstMatch(file.path)?[1] as String;
@@ -52,6 +53,7 @@ class _RecipeNameState extends State<RecipeName> {
       setState(() {
         downloadUrl = taskSnapshot.ref.getDownloadURL() as String;
         print(downloadUrl);
+        // _img = Image.network(downloadUrl);
       });
 
 
@@ -90,8 +92,8 @@ class _RecipeNameState extends State<RecipeName> {
                   Container(
                     width: screenSize.width * 1,
                     height: screenSize.height * 0.25,
-                    child: downloadUrl != ""
-                        ? Image.network(downloadUrl)
+
+                    child: _imageFile != null ? Image.file(_imageFile!)
                         : Container(
                       color: Colors.grey[400],
                     ),

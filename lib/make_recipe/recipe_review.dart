@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dotted_line/dotted_line.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 class RecipeReview extends StatefulWidget {
@@ -28,7 +29,28 @@ class RecipeReview extends StatefulWidget {
 }
 
 class _RecipeReviewState extends State<RecipeReview> {
+  String testImage = 'test_image.jpg';
   var foodMap = Map();
+  Image? _img;
+
+  @override
+  void initState(){
+    Future(() async {
+      String _imgPath = widget.imgPath;
+      try {
+        var imageUrl = await FirebaseStorage.instance.ref().child("image/food/$_imgPath").getDownloadURL();
+
+        setState(() {
+          _img = Image.network(imageUrl);
+        });
+
+      } catch (e) {
+        print("-----------");
+        print(e);
+        print("-----------");
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +112,7 @@ class _RecipeReviewState extends State<RecipeReview> {
                 //
                 Container(
                   width: screenSize.width * 1.0,
-                  child: Image.network(
-                    'https://d2ij38769uvyqz.cloudfront.net/inshokuten-com/supplier/upload_picture/suppBuyersMagazine/S1558920237646_1.jpg',
-                  ),
+                  child: _img,
                 ),
                 //
                 // 料理の材料
@@ -222,13 +242,14 @@ class _RecipeReviewState extends State<RecipeReview> {
             //　レシピのデータをFirestoreに記録
             DocumentReference doc =
                 await FirebaseFirestore.instance.collection('recipe').add({
-              'recipeImagePath': widget.imgPath,
-              'recipeName': widget.recipeName,
-              'selectedCuisine': widget.selectedCuisine,
-              'ingredientList': widget.ingredientList,
-              'quantityList': widget.quantityList,
-              'makingList': widget.makingList,
-              'userUID': uid,
+              'recipeImagePath' : widget.imgPath,
+              // 'recipeImagePath' : testImage,
+              'recipeName'      : widget.recipeName,
+              'selectedCuisine' : widget.selectedCuisine,
+              'ingredientList'  : widget.ingredientList,
+              'quantityList'    : widget.quantityList,
+              'makingList'      : widget.makingList,
+              'userUID'         : uid,
             });
 
             String docId = doc.id;
@@ -236,7 +257,9 @@ class _RecipeReviewState extends State<RecipeReview> {
             FirebaseFirestore.instance
                 .collection('userCollection')
                 .doc(uid)
-                .update({'recipeID': FieldValue.arrayUnion([docId])});
+                .update({
+              'recipeID': FieldValue.arrayUnion([docId])
+            });
           } catch (e) {
             print(e);
           }

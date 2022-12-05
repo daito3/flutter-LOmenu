@@ -93,8 +93,14 @@ flutter:
 
   assets:
     - assets/a.png
+    - assets/test_image.jpg
     - assets/LOmenu-icon.png
     - assets/LOmenu_splash4.png
+    - assets/LOmenu_gurahu.png
+    - assets/mypage_food_image.jpg
+    - assets/image_picker1116821702790665454.jpg
+    - assets/image_picker1134667383066571979.jpg
+
     - assets/lomenu-food/lomenu-1-1-onion.jpeg
     - assets/lomenu-food/lomenu-1-2-potato.jpeg
     - assets/lomenu-food/lomenu-1-3-carrot.jpeg

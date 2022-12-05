@@ -46,8 +46,8 @@ class _MyPageState extends State<MyPage> {
       body: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
-            height: screenSize.height * 0.28,
+            margin: const EdgeInsets.fromLTRB(10, 20, 10, 5),
+            height: screenSize.height * 0.29,
             width: screenSize.width * 1,
             decoration: const BoxDecoration(
               boxShadow: [
@@ -62,6 +62,7 @@ class _MyPageState extends State<MyPage> {
             ),
             child: Column(
               children: [
+                SizedBox(height: screenSize.height * 0.01),
                 Expanded(
                     flex: 2,
                     child: Container(
@@ -69,7 +70,7 @@ class _MyPageState extends State<MyPage> {
                       child: const Text(
                         "今日のおすすめ",
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 27,
                         ),
                       ),
                     )),
@@ -84,9 +85,8 @@ class _MyPageState extends State<MyPage> {
                               child: Container(
                                 color: Colors.white,
                                 child: Container(
-                                  margin: const EdgeInsets.all(10),
-                                  child: Image.network(
-                                      'https://d2ij38769uvyqz.cloudfront.net/inshokuten-com/supplier/upload_picture/suppBuyersMagazine/S1558920237646_1.jpg'),
+                                  margin: const EdgeInsets.fromLTRB(10,0,10,10),
+                                  child: Image.asset('assets/mypage_food_image.jpg')
                                   //color: Colors.red,
                                 ),
                               )),
@@ -126,7 +126,7 @@ class _MyPageState extends State<MyPage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.fromLTRB(10,5,10,5),
             height: screenSize.height * 0.3,
             width: screenSize.width * 1,
             decoration: const BoxDecoration(
@@ -142,6 +142,7 @@ class _MyPageState extends State<MyPage> {
             ),
             child: Column(
               children: [
+                SizedBox(height: screenSize.height * 0.01),
                 Expanded(
                     flex: 2,
                     child: Container(
@@ -149,7 +150,7 @@ class _MyPageState extends State<MyPage> {
                       child: const Text(
                         "今月の支出",
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 27,
                         ),
                       ),
                     )),
@@ -163,114 +164,9 @@ class _MyPageState extends State<MyPage> {
                               flex: 5,
                               child: Container(
                                 //食材別の支出の円グラフ
-                                margin: const EdgeInsets.all(15),
+                                // margin: const EdgeInsets.all(15),
                                 child: Container(
-                                    // child: PieChart(
-                                    //   PieChartData(
-                                    //     startDegreeOffset: 270,
-                                    //     sections: [
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 2 / 24 * 100,
-                                    //           titlePositionPercentageOffset:
-                                    //               0.7,
-                                    //           title: "ゲーム\nテレビ",
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 1 / 24 * 100,
-                                    //           titlePositionPercentageOffset:
-                                    //               0.8,
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           title: "寝る\n準備",
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 7 / 24 * 100,
-                                    //           titlePositionPercentageOffset:
-                                    //               0.5,
-                                    //           title: "眠",
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 2 / 24 * 100,
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           titlePositionPercentageOffset:
-                                    //               0.7,
-                                    //           title: "朝ご飯\nテレビ",
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 4 / 24 * 100,
-                                    //           title: "?",
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 60),
-                                    //           titlePositionPercentageOffset:
-                                    //               0.7,
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 2 / 24 * 100,
-                                    //           title: "散歩",
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           titlePositionPercentageOffset:
-                                    //               0.7,
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 1 / 24 * 100,
-                                    //           title: "晩御飯",
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           titlePositionPercentageOffset:
-                                    //               0.7,
-                                    //           radius: 160),
-                                    //       PieChartSectionData(
-                                    //           borderSide: BorderSide(
-                                    //               color: Colors.black,
-                                    //               width: 1),
-                                    //           color: Colors.white,
-                                    //           value: 5 / 24 * 100,
-                                    //           title:
-                                    //               "家での自由時間\nテレビ\n漫画\nゲーム\nラジオ",
-                                    //           titleStyle:
-                                    //               TextStyle(fontSize: 10),
-                                    //           titlePositionPercentageOffset:
-                                    //               0.6,
-                                    //           radius: 160),
-                                    //     ],
-                                    //     sectionsSpace: 0,
-                                    //     centerSpaceRadius: 0,
-                                    //   ),
-                                    // )
+                                  child: Image.asset('assets/LOmenu_gurahu.png'),
                                   ),
                               )),
                           Expanded(
@@ -316,8 +212,7 @@ class _MyPageState extends State<MyPage> {
                                         flex: 1,
                                         child: Container(
                                           color: Colors.white,
-                                          margin: EdgeInsets.fromLTRB(
-                                              0, 20, 20, 20),
+                                          margin: EdgeInsets.fromLTRB(0, 20, 20, 20),
                                           child: Row(
                                             children: [
                                               Expanded(
@@ -356,7 +251,7 @@ class _MyPageState extends State<MyPage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.all(10),
+            margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             height: screenSize.height * 0.28,
             width: screenSize.width * 1,
             decoration: const BoxDecoration(
