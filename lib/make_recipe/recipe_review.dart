@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class RecipeReview extends StatefulWidget {
   final recipeName;
@@ -34,22 +35,34 @@ class _RecipeReviewState extends State<RecipeReview> {
   Image? _img;
 
   @override
-  void initState(){
+  void initState() {
     Future(() async {
       String _imgPath = widget.imgPath;
       try {
-        var imageUrl = await FirebaseStorage.instance.ref().child("image/food/$_imgPath").getDownloadURL();
+        var imageUrl = await FirebaseStorage.instance
+            .ref()
+            .child("image/food/$_imgPath")
+            .getDownloadURL();
 
         setState(() {
-          _img = Image.network(imageUrl);
+          _img = imageUrl as Image?;
         });
-
       } catch (e) {
         print("-----------");
         print(e);
         print("-----------");
       }
     });
+  }
+
+  String generateRandomString([int length = 32]) {
+    const charset =
+        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+    final random = Random.secure();
+    final randomStr =
+        List.generate(length, (_) => charset[random.nextInt(charset.length)])
+            .join();
+    return randomStr;
   }
 
   @override
@@ -239,17 +252,23 @@ class _RecipeReviewState extends State<RecipeReview> {
           print(widget.makingList);
 
           try {
+            //　作成時間の取得
+            var now = DateTime.now();
+            var createTime = "${now.year}/${now.month}/${now.day}";
+            var randomString = generateRandomString();
+
             //　レシピのデータをFirestoreに記録
+
             DocumentReference doc =
-                await FirebaseFirestore.instance.collection('recipe').add({
-              'recipeImagePath' : widget.imgPath,
-              // 'recipeImagePath' : testImage,
-              'recipeName'      : widget.recipeName,
-              'selectedCuisine' : widget.selectedCuisine,
-              'ingredientList'  : widget.ingredientList,
-              'quantityList'    : widget.quantityList,
-              'makingList'      : widget.makingList,
-              'userUID'         : uid,
+            await FirebaseFirestore.instance.collection('recipe').add({
+              'recipeImagePath': widget.imgPath,
+              'recipeName': widget.recipeName,
+              'selectedCuisine': widget.selectedCuisine,
+              'ingredientList': widget.ingredientList,
+              'quantityList': widget.quantityList,
+              'makingList': widget.makingList,
+              'userUID': uid,
+              'createTime': createTime,
             });
 
             String docId = doc.id;
@@ -260,6 +279,7 @@ class _RecipeReviewState extends State<RecipeReview> {
                 .update({
               'recipeID': FieldValue.arrayUnion([docId])
             });
+
           } catch (e) {
             print(e);
           }

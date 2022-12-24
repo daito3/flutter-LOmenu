@@ -44,6 +44,7 @@ dependencies:
   firebase_storage: ^11.0.6
   path_provider: ^2.0.11
   image_picker: ^0.8.6
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_native_splash: ^2.1.3+1
@@ -93,6 +94,7 @@ flutter:
 
   assets:
     - assets/a.png
+    - assets/No_Image.png
     - assets/test_image.jpg
     - assets/LOmenu-icon.png
     - assets/LOmenu_splash4.png

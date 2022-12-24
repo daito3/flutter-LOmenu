@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:lomenu/igredientAdd.dart';
-import 'package:lomenu/option.dart';
+import 'package:lomenu/hamburger_menu/option.dart';
 
+import 'ProductWidget.dart';
 import 'make_recipe/ingredient_Add_Test.dart';
 import 'login/sign-up.dart';
 import 'make_recipe/making_Add.dart';
@@ -19,34 +21,15 @@ class MyPage extends StatefulWidget {
 class _MyPageState extends State<MyPage> {
   static List<String> items = [];
 
-
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ホーム'),
-        backgroundColor: const Color(0xFFff8e3c),
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications),
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return OptionPage();
-              }));
-            },
-            icon: const Icon(Icons.settings),
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Container(
-            margin: const EdgeInsets.fromLTRB(10, 20, 10, 5),
+            margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
             height: screenSize.height * 0.29,
             width: screenSize.width * 1,
             decoration: const BoxDecoration(
@@ -85,10 +68,12 @@ class _MyPageState extends State<MyPage> {
                               child: Container(
                                 color: Colors.white,
                                 child: Container(
-                                  margin: const EdgeInsets.fromLTRB(10,0,10,10),
-                                  child: Image.asset('assets/mypage_food_image.jpg')
-                                  //color: Colors.red,
-                                ),
+                                    margin: const EdgeInsets.fromLTRB(
+                                        10, 0, 10, 10),
+                                    child: Image.asset(
+                                        'assets/mypage_food_image.jpg')
+                                    //color: Colors.red,
+                                    ),
                               )),
                           Expanded(
                               flex: 3,
@@ -126,7 +111,7 @@ class _MyPageState extends State<MyPage> {
             ),
           ),
           Container(
-            margin: const EdgeInsets.fromLTRB(10,5,10,5),
+            margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
             height: screenSize.height * 0.3,
             width: screenSize.width * 1,
             decoration: const BoxDecoration(
@@ -166,8 +151,9 @@ class _MyPageState extends State<MyPage> {
                                 //食材別の支出の円グラフ
                                 // margin: const EdgeInsets.all(15),
                                 child: Container(
-                                  child: Image.asset('assets/LOmenu_gurahu.png'),
-                                  ),
+                                  child:
+                                      Image.asset('assets/LOmenu_gurahu.png'),
+                                ),
                               )),
                           Expanded(
                               flex: 4,
@@ -212,7 +198,8 @@ class _MyPageState extends State<MyPage> {
                                         flex: 1,
                                         child: Container(
                                           color: Colors.white,
-                                          margin: EdgeInsets.fromLTRB(0, 20, 20, 20),
+                                          margin: EdgeInsets.fromLTRB(
+                                              0, 20, 20, 20),
                                           child: Row(
                                             children: [
                                               Expanded(
@@ -268,6 +255,15 @@ class _MyPageState extends State<MyPage> {
             child: Column(
               children: [
                 Text(widget.email ?? ""),
+                TextButton(
+                 onPressed: () {
+                   Navigator.of(context)
+                       .push(MaterialPageRoute(builder: (context) {
+                     return ProductWidget();
+                   }));
+                 },
+                 child: Text('aaaaaaa')
+                )
               ],
             ),
           ),

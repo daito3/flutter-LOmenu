@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
-import 'vegetable.dart';
-import 'meat.dart';
-import 'fish.dart';
-import 'staple_food.dart';
-import 'dairy_products.dart';
-import 'seasoning.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import 'package:lomenu/menu/dessert.dart';
+import 'package:lomenu/menu/main_dish.dart';
+import 'package:lomenu/menu/meal.dart';
+import 'package:lomenu/menu/side_dish.dart';
+import 'package:lomenu/menu/soup.dart';
 
-  TabBar get _tabBar => const TabBar(
+import 'menu.dart';
+
+class MenuHomeScreen extends StatelessWidget {
+  const MenuHomeScreen({Key? key}) : super(key: key);
+
+  TabBar get _tabBar =>
+      const TabBar(
         isScrollable: true,
         labelColor: Colors.black,
         indicatorColor: Colors.black,
 
-    tabs: [
-          Tab(text: "野菜"),
-          Tab(text: "肉"),
-          Tab(text: "魚介"),
-          Tab(text: "主食"),
-          Tab(text: "乳製品"),
-          Tab(text: "調味料"),
+        tabs: [
+          Tab(text: "全て"),
+          Tab(text: "主菜"),
+          Tab(text: "副菜"),
+          Tab(text: "汁物"),
+          Tab(text: "ご飯物"),
+          Tab(text: "デザート"),
         ],
       );
 
   @override
   Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
 
     return DefaultTabController(
       initialIndex: 0, // 最初に表示するタブ
@@ -46,12 +48,12 @@ class HomeScreen extends StatelessWidget {
         extendBodyBehindAppBar: true,
         body: const TabBarView(
           children: <Widget>[
-            Foodform(),
-            Meatform(),
-            Fishform(),
-            Staplefood(),
-            Dairyproducts(),
-            Seasoning(),
+            Menu(),
+            MainDishPage(),
+            SideDishPage(),
+            SoupPage(),
+            MealPage(),
+            DessertPage()
           ],
         ),
       ),

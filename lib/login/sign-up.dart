@@ -59,7 +59,7 @@ class _SignupPageState extends State<SignupPage> {
                 decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
-                  hintText: 'ユーザー名',
+                  labelText: 'ユーザー名',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
@@ -80,7 +80,7 @@ class _SignupPageState extends State<SignupPage> {
                 decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
-                    hintText: 'メールアドレス',
+                    labelText: 'メールアドレス',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     )),
@@ -98,7 +98,7 @@ class _SignupPageState extends State<SignupPage> {
                 decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
-                    hintText: 'パスワード',
+                    labelText: 'パスワード',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     )),

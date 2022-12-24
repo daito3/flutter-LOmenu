@@ -55,13 +55,13 @@ class _IngredientState extends State<Ingredient> {
                 child: Column(
                   children: [
                     Container(
-                      padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                       child: Column(
                         children: [
                           TextFormField(
                             controller: _controller1,
                             decoration: InputDecoration(
-                              hintText: '食材を記入してください',
+                              border: OutlineInputBorder(),
+                              labelText: '食材を記入',
                               suffixIcon: IconButton(
                                 onPressed: () => _controller1.clear(), //リセット処理
                                 icon: Icon(Icons.clear),
@@ -73,10 +73,12 @@ class _IngredientState extends State<Ingredient> {
                               });
                             },
                           ),
+                          SizedBox(height: screenSize.height * 0.015,),
                           TextFormField(
                             controller: _controller2,
                             decoration: InputDecoration(
-                              hintText: '食材の量を記入してください',
+                              border: OutlineInputBorder(),
+                              labelText: '食材の量を記入',
                               suffixIcon: IconButton(
                                 onPressed: () => _controller2.clear(), //リセット処理
                                 icon: Icon(Icons.clear),
@@ -88,6 +90,7 @@ class _IngredientState extends State<Ingredient> {
                               });
                             },
                           ),
+                          SizedBox(height: screenSize.height * 0.015,),
                         ],
                       ),
                     ),
@@ -203,8 +206,6 @@ class _IngredientState extends State<Ingredient> {
                 height: 10,
               ),
               Text(_log),
-              Text(widget.recipeName),
-              Text(widget.selectedCuisine)
             ],
           ),
         ),

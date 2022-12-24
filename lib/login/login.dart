@@ -58,7 +58,7 @@ class _LoginPageState extends State<LoginPage>{
                 decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
-                    hintText: 'メールアドレス',
+                    labelText: 'メールアドレス',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     )
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage>{
                 decoration: InputDecoration(
                     fillColor: Colors.white,
                     filled: true,
-                    hintText: 'パスワード',
+                    labelText: 'パスワード',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
                     )

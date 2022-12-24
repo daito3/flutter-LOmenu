@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'hamburger_menu/option.dart';
+
 class Receipt extends StatefulWidget {
   const Receipt({Key? key}) : super(key: key);
 
@@ -10,22 +12,10 @@ class Receipt extends StatefulWidget {
 class _ReceiptState extends State<Receipt> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('レシート読み込み'),
-        backgroundColor: const Color(0xFFff8e3c),
+    var screenSize = MediaQuery.of(context).size;
 
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.notifications),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.settings),
-          ),
-        ],
-      ),
+    return Scaffold(
+
     );
   }
 }
