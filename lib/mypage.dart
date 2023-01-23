@@ -253,18 +253,7 @@ class _MyPageState extends State<MyPage> {
               color: Colors.white,
             ),
             child: Column(
-              children: [
-                Text(widget.email ?? ""),
-                TextButton(
-                 onPressed: () {
-                   Navigator.of(context)
-                       .push(MaterialPageRoute(builder: (context) {
-                     return ProductWidget();
-                   }));
-                 },
-                 child: Text('aaaaaaa')
-                )
-              ],
+              children: [],
             ),
           ),
         ]),

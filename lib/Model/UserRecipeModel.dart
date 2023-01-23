@@ -21,3 +21,15 @@ class RecipeModel {
       this.recipeId,
       );
 }
+
+class RecipeMainModel {
+  String recipeName;
+  String recipeImagePath;
+  String recipeId;
+
+  RecipeMainModel(
+      this.recipeName,
+      this.recipeImagePath,
+      this.recipeId,
+      );
+}

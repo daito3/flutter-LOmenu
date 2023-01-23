@@ -44,6 +44,7 @@ List<String> _meatImageList = [
   "lomenu-2-13-usi-hire.png",
   "lomenu-2-14-hikiniku-chicken.png",
   "lomenu-2-15-hikiniku-pork.png",
+
   "lomenu-1-6-piman.png",
   "lomenu-1-6-piman.png",
   "lomenu-1-6-piman.png",
@@ -136,10 +137,21 @@ class _MeatformState extends State<Meatform> {
             itemCount: _foodListMeat.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                color: Colors.white,
+                padding: EdgeInsets.all(4),
                 height: 60,
-                child: Card(
-                  elevation: 15,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey, //色
+                        spreadRadius: 0.5,
+                        blurRadius: 0.5,
+                        offset: Offset(0.5, 0.5),
+                      ),
+                    ],
+                    color: Colors.white,
+                  ),
+                  // elevation: 15,
                   child: Column(
                     children: [
                       Expanded(

@@ -32,6 +32,7 @@ class RecipeReview extends StatefulWidget {
 class _RecipeReviewState extends State<RecipeReview> {
   String testImage = 'test_image.jpg';
   var foodMap = Map();
+  String? imageUrl;
   Image? _img;
 
   @override
@@ -39,13 +40,13 @@ class _RecipeReviewState extends State<RecipeReview> {
     Future(() async {
       String _imgPath = widget.imgPath;
       try {
-        var imageUrl = await FirebaseStorage.instance
+        imageUrl = await FirebaseStorage.instance
             .ref()
             .child("image/food/$_imgPath")
             .getDownloadURL();
 
         setState(() {
-          _img = imageUrl as Image?;
+          _img = Image.network(imageUrl!);
         });
       } catch (e) {
         print("-----------");
@@ -55,15 +56,15 @@ class _RecipeReviewState extends State<RecipeReview> {
     });
   }
 
-  String generateRandomString([int length = 32]) {
-    const charset =
-        '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
-    final random = Random.secure();
-    final randomStr =
-        List.generate(length, (_) => charset[random.nextInt(charset.length)])
-            .join();
-    return randomStr;
-  }
+  // String generateRandomString([int length = 32]) {
+  //   const charset =
+  //       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._';
+  //   final random = Random.secure();
+  //   final randomStr =
+  //       List.generate(length, (_) => charset[random.nextInt(charset.length)])
+  //           .join();
+  //   return randomStr;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -244,24 +245,24 @@ class _RecipeReviewState extends State<RecipeReview> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFFff8e3c),
         onPressed: () async {
-          print(widget.recipeName);
-          print(widget.selectedCuisine);
-          print(widget.imgPath);
-          print(widget.ingredientList);
-          print(widget.quantityList);
-          print(widget.makingList);
+          // print(widget.recipeName);
+          // print(widget.selectedCuisine);
+          // print(widget.imgPath);
+          // print(widget.ingredientList);
+          // print(widget.quantityList);
+          // print(widget.makingList);
 
           try {
             //　作成時間の取得
             var now = DateTime.now();
             var createTime = "${now.year}/${now.month}/${now.day}";
-            var randomString = generateRandomString();
+            // var randomString = generateRandomString();
 
             //　レシピのデータをFirestoreに記録
 
             DocumentReference doc =
             await FirebaseFirestore.instance.collection('recipe').add({
-              'recipeImagePath': widget.imgPath,
+              'recipeImagePath': imageUrl,
               'recipeName': widget.recipeName,
               'selectedCuisine': widget.selectedCuisine,
               'ingredientList': widget.ingredientList,

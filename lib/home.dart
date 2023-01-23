@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Container(
-              height: screenSize.height*0.1,
+              height: screenSize.height * 0.1,
               color: const Color(0xFFff8e3c),
               child: const Text(
                 'Menu',
@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               padding: EdgeInsets.fromLTRB(12, 6, 0, 0),
               child: TextButton(
-                onPressed: ((){
+                onPressed: (() {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return AccountPage();
@@ -65,17 +65,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       size: 30,
                       color: Colors.black,
                     ),
-                    SizedBox(width: screenSize.width*0.015,),
+                    SizedBox(
+                      width: screenSize.width * 0.015,
+                    ),
                     Text(
                       'アカウント',
-                      style: TextStyle(fontSize: 24,color: Colors.black,),
-
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                      ),
                     ),
                     Expanded(
                         child: Container(
-                          padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
-                            child: Icon(
-                                Icons.arrow_forward_ios,color: Colors.black),alignment: Alignment.centerRight))
+                            padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
+                            child: Icon(Icons.arrow_forward_ios,
+                                color: Colors.black),
+                            alignment: Alignment.centerRight))
                   ],
                 ),
               ),
@@ -89,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: TextButton(
-                onPressed: ((){
+                onPressed: (() {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return FavoritePage();
@@ -102,10 +107,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       size: 32,
                       color: Colors.black,
                     ),
-                    SizedBox(width: screenSize.width*0.015),
+                    SizedBox(width: screenSize.width * 0.015),
                     Text(
                       'お気に入り',
-                      style: TextStyle(fontSize: 24,color: Colors.black,),
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                      ),
                     ),
                     Expanded(
                         child: Container(
@@ -262,11 +270,32 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
               child: TextButton(
                 onPressed: (() {
-                  FirebaseAuth.instance.signOut();
-                  if (FirebaseAuth.instance.currentUser != null) {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => SignupPage()));
-                  }
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("ログアウト"),
+                          content: Text("本当にログアウトしてもかまいませんか？"),
+                          actions: [
+                            TextButton(
+                              child: Text("Cancel"),
+                              onPressed: () => Navigator.pop(context),
+                            ),
+                            TextButton(
+                              child: Text("OK"),
+                              onPressed: (() {
+                                FirebaseAuth.instance.signOut();
+                                if (FirebaseAuth.instance.currentUser != null) {
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SignupPage()));
+                                }
+                              }),
+                            ),
+                          ],
+                        );
+                      });
                 }),
                 child: Row(
                   children: [
@@ -318,10 +347,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ].elementAt(_selectedTab),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.home), label: 'home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.kitchen), label: 'food'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+          BottomNavigationBarItem(icon: Icon(Icons.kitchen), label: 'food'),
           BottomNavigationBarItem(
               icon: Icon(Icons.restaurant_menu), label: 'menu'),
           BottomNavigationBarItem(

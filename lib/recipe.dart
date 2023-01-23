@@ -55,11 +55,13 @@ class _RecipeViewState extends State<RecipeView> {
             _imgPath = snapshot.get('recipeImagePath');
             userUID = snapshot.get('userUID');
             createTime = snapshot.get('createTime');
+
+            // _img = Image.network(snapshot.get('recipeImagePath'));
           });
         });
 
         if (userUID != "") {
-          store
+          await store
               .collection("userCollection")
               .doc(userUID)
               .get()
@@ -69,21 +71,20 @@ class _RecipeViewState extends State<RecipeView> {
             });
           });
         };
-
-        if (_imgPath != "") {
-          var imageUrl = await FirebaseStorage.instance
-              .ref()
-              .child("image/food/$_imgPath")
-              .getDownloadURL();
-
-          setState(() {
-            _img = Image.network(imageUrl);
-          });
-        } else if (_imgPath == "") {
-          setState(() {
-            _img = Image.asset("assets/No_Image.png");
-          });
-        }
+        // if (_imgPath != "") {
+        //   var imageUrl = await FirebaseStorage.instance
+        //       .ref()
+        //       .child("image/food/$_imgPath")
+        //       .getDownloadURL();
+        //
+        //   setState(() {
+        //     _img = Image.network(imageUrl);
+        //   });
+        // } else if (_imgPath == "") {
+        //   setState(() {
+        //     _img = Image.asset("assets/No_Image.png");
+        //   });
+        // }
 
       } catch (e) {
         print(e);
@@ -112,8 +113,8 @@ class _RecipeViewState extends State<RecipeView> {
                   children: [
                     Container(
                       width: screenSize.width * 1.0,
-                      child: _img != null ? _img : Image.asset("assets/No_Image.png")
-                      // child: Image.asset("assets/" + imgPath!),
+                      // child: _img,
+                      child: _imgPath != "" ? Image.network(_imgPath!) : Image.asset("assets/No_Image.png")
                     ),
                     //
                     // レシピ　詳細情報

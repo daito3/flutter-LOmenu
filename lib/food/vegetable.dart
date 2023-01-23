@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 //食材のリスト
-List<String> testList = [
+List<String> _testList = [
   '玉ねぎ',
   'じゃがいも',
   'にんじん',
@@ -62,14 +62,14 @@ class Foodform extends StatefulWidget {
 }
 
 class _FoodformState extends State<Foodform> {
-  final prefs = SharedPreferences.getInstance();
+  // final prefs = SharedPreferences.getInstance();
 
   int _counter = 0;
 
   String ok = "no";
 
   //食材の個数のリスト
-  List<int> kosu = [
+  List<int> _kosu = [
     0,
     0,
     0,
@@ -107,14 +107,14 @@ class _FoodformState extends State<Foodform> {
       _counter = 0;
       final prefs = await SharedPreferences.getInstance();
       setState(() {
-        kosu.clear();
-        for (var i = 0; i <= testList.length - 1; i++) {
-          if (prefs.getInt(testList[i]) == 0) {
-            prefs.setInt(testList[i], 0);
-            kosu.add(0);
+        _kosu.clear();
+        for (var i = 0; i <= _testList.length - 1; i++) {
+          if (prefs.getInt(_testList[i]) == 0) {
+            prefs.setInt(_testList[i], 0);
+            _kosu.add(0);
           } else {
-            _counter = prefs.getInt(testList[i]) ?? 0;
-            kosu.add(_counter);
+            _counter = prefs.getInt(_testList[i]) ?? 0;
+            _kosu.add(_counter);
           }
         }
       });
@@ -138,23 +138,24 @@ class _FoodformState extends State<Foodform> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
             ),
-            itemCount: testList.length,
+            itemCount: _testList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
+                padding: EdgeInsets.all(4),
                 height: 60,
-                decoration: const BoxDecoration(
-                  // boxShadow: [
-                  //   BoxShadow(
-                  //     color: Colors.grey, //色
-                  //     spreadRadius: 1,
-                  //     blurRadius: 1,
-                  //     offset: Offset(1, 1),
-                  //   ),
-                  // ],
-                  color: Colors.white,
-                ),
-                child: Card(
-                  elevation: 10,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey, //色
+                        spreadRadius: 0.5,
+                        blurRadius: 0.5,
+                        offset: Offset(0.5, 0.5),
+                      ),
+                    ],
+                    color: Colors.white,
+                  ),
+                  // elevation: 10,
                   child: Column(
                     children: [
                       Expanded(
@@ -185,14 +186,14 @@ class _FoodformState extends State<Foodform> {
                                                         await SharedPreferences
                                                             .getInstance();
                                                     prefs.setInt(
-                                                        testList[index],
-                                                        kosu[index]);
+                                                        _testList[index],
+                                                        _kosu[index]);
                                                   }
 
                                                   setState(() {
-                                                    if (kosu[index] != 0) {
-                                                      kosu[index] = decrement(
-                                                          kosu[index]);
+                                                    if (_kosu[index] != 0) {
+                                                      _kosu[index] = decrement(
+                                                          _kosu[index]);
                                                       _setPlefItem();
                                                     } else {}
                                                   });
@@ -211,14 +212,14 @@ class _FoodformState extends State<Foodform> {
                                                         await SharedPreferences
                                                             .getInstance();
                                                     prefs.setInt(
-                                                        testList[index],
-                                                        kosu[index]);
+                                                        _testList[index],
+                                                        _kosu[index]);
                                                   }
 
                                                   setState(() {
-                                                    if (kosu[index] != 99) {
-                                                      kosu[index] = increment(
-                                                          kosu[index]);
+                                                    if (_kosu[index] != 99) {
+                                                      _kosu[index] = increment(
+                                                          _kosu[index]);
                                                     }
                                                     _setPlefItem();
                                                   });
@@ -233,7 +234,7 @@ class _FoodformState extends State<Foodform> {
                               )
                             ],
                           )),
-                      Expanded(flex: 1,child: Text(kosu[index].toString())),
+                      Expanded(flex: 1,child: Text(_kosu[index].toString())),
                       Expanded(
                           flex: 1,
                           child: Container(
@@ -241,7 +242,7 @@ class _FoodformState extends State<Foodform> {
                             color: Colors.white,
                             child: Center(
                                 child: Text(
-                              testList.elementAt(index),
+                              _testList.elementAt(index),
                               textAlign: TextAlign.center,
                             )),
                           ))),
