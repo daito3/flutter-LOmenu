@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -8,8 +10,30 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  String accountName = "";
+  String accountEmail = "";
+
+  @override
+  void initState() {
+    super.initState();
+    Future(() async {
+      final auth = FirebaseAuth.instance;
+      final uid = auth.currentUser?.uid.toString();
+
+      final Account = await FirebaseFirestore.instance
+          .collection("userCollection")
+          .doc(uid)
+          .get();
+      setState(() {
+        accountName  = Account["UserName"];
+        accountEmail = Account["email"];
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -30,7 +54,7 @@ class _AccountPageState extends State<AccountPage> {
                   children: [
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'ユーザーネーム',
                           style: TextStyle(fontSize: 22),
                         ),
@@ -43,7 +67,7 @@ class _AccountPageState extends State<AccountPage> {
                           width: screenSize.width * 0.05,
                         ),
                         Text(
-                          'リュぴ',
+                          accountName!,
                           style: TextStyle(fontSize: 20),
                         ),
                       ],
@@ -60,7 +84,7 @@ class _AccountPageState extends State<AccountPage> {
                   children: [
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'メールアドレス',
                           style: TextStyle(fontSize: 22),
                         ),
@@ -73,7 +97,7 @@ class _AccountPageState extends State<AccountPage> {
                           width: screenSize.width * 0.05,
                         ),
                         Text(
-                          'ryupi@gmail.com',
+                          accountEmail!,
                           style: TextStyle(fontSize: 20),
                         ),
                       ],

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'hamburger_menu/option.dart';
-
 class Receipt extends StatefulWidget {
   const Receipt({Key? key}) : super(key: key);
 
@@ -15,6 +13,7 @@ class _ReceiptState extends State<Receipt> {
     var screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
+      body: Center(child: Text("未実装", style: TextStyle(fontSize: 48),),),
 
     );
   }

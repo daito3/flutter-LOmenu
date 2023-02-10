@@ -29,7 +29,6 @@ class BaseTabView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final view = ref.watch(baseTabViewProvider.state);
     return Scaffold(
-      //appBar: AppBar(title: Text(view.state.name)),
       body: widgets[view.state.index],
       bottomNavigationBar: BottomNavigationBar(
         items: const [

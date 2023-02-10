@@ -55,8 +55,6 @@ class _RecipeViewState extends State<RecipeView> {
             _imgPath = snapshot.get('recipeImagePath');
             userUID = snapshot.get('userUID');
             createTime = snapshot.get('createTime');
-
-            // _img = Image.network(snapshot.get('recipeImagePath'));
           });
         });
 
@@ -71,20 +69,6 @@ class _RecipeViewState extends State<RecipeView> {
             });
           });
         };
-        // if (_imgPath != "") {
-        //   var imageUrl = await FirebaseStorage.instance
-        //       .ref()
-        //       .child("image/food/$_imgPath")
-        //       .getDownloadURL();
-        //
-        //   setState(() {
-        //     _img = Image.network(imageUrl);
-        //   });
-        // } else if (_imgPath == "") {
-        //   setState(() {
-        //     _img = Image.asset("assets/No_Image.png");
-        //   });
-        // }
 
       } catch (e) {
         print(e);

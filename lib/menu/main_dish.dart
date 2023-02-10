@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../Model/UserRecipeListModel.dart';
+import '../Model/RecipeListModel.dart';
 import '../recipe.dart';
 
 class MainDishPage extends StatefulWidget {

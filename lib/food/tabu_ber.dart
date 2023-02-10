@@ -4,6 +4,7 @@ import 'meat.dart';
 import 'fish.dart';
 import 'staple_food.dart';
 import 'dairy_products.dart';
+import 'dessert_food.dart';
 import 'seasoning.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,9 +19,10 @@ class HomeScreen extends StatelessWidget {
           Tab(text: "野菜"),
           Tab(text: "肉"),
           Tab(text: "魚介"),
-          Tab(text: "主食"),
-          Tab(text: "乳製品"),
+          Tab(text: "主食・粉"),
+          Tab(text: "卵・乳・豆"),
           Tab(text: "調味料"),
+          Tab(text: "デザート"),
         ],
       );
 
@@ -30,7 +32,7 @@ class HomeScreen extends StatelessWidget {
 
     return DefaultTabController(
       initialIndex: 0, // 最初に表示するタブ
-      length: 6, // タブの数
+      length: 7, // タブの数
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white.withOpacity(0.0),
@@ -52,6 +54,7 @@ class HomeScreen extends StatelessWidget {
             Staplefood(),
             Dairyproducts(),
             Seasoning(),
+            DessertFood(),
           ],
         ),
       ),

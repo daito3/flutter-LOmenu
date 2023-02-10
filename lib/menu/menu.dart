@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../Model/UserRecipeListModel.dart';
+import '../Model/RecipeListModel.dart';
 import '../recipe.dart';
 
 class Menu extends StatefulWidget {
@@ -67,6 +67,7 @@ class _MenuState extends State<Menu> {
                               Expanded(
                                   flex: 1,
                                   child: Container(
+                                    alignment: Alignment.center,
                                     child: Text(recipes[index].recipeName),
                                   ))
                         ],

@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'package:lomenu/menu/dessert.dart';
+import 'package:lomenu/menu/menu.dart';
 import 'package:lomenu/menu/main_dish.dart';
-import 'package:lomenu/menu/meal.dart';
 import 'package:lomenu/menu/side_dish.dart';
 import 'package:lomenu/menu/soup.dart';
+import 'package:lomenu/menu/meal.dart';
+import 'package:lomenu/menu/dessert.dart';
 
-import 'menu.dart';
-
-class MenuHomeScreen extends StatelessWidget {
+class MenuHomeScreen extends StatefulWidget {
   const MenuHomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MenuHomeScreen> createState() => _MenuHomeScreen();
+}
+
+class _MenuHomeScreen extends State<MenuHomeScreen> {
 
   TabBar get _tabBar =>
       const TabBar(
@@ -29,6 +34,12 @@ class MenuHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    // print("####################");
+    // print(_kosu.length);
+    // print(_kosu);
+    // print(ingredient_you_have.length);
+    // print(ingredient_you_have);
 
     return DefaultTabController(
       initialIndex: 0, // 最初に表示するタブ

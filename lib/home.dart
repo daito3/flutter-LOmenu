@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'hamburger_menu/favorite.dart';
 import 'login/sign-up.dart';
 
-import 'package:lomenu/mypage.dart';
+import 'package:lomenu/mypage/mypage.dart';
 import 'package:lomenu/food/tabu_ber.dart';
 import 'package:lomenu/menu/menu_tab_ber.dart';
 import 'package:lomenu/make_recipe/new_recipe.dart';

@@ -127,6 +127,27 @@ List<String> _testList = [
   "わさび",
   "からし",
   "オイスターソース",
+
+  //　フルーツ・甘物　17
+  "リンゴ",
+  "バナナ",
+  "オレンジ",
+  "いちご",
+  "キウイ",
+  "ぶどう",
+  "もも",
+  "スイカ",
+  "メロン",
+  "さくらんぼ",
+  "なし",
+  "柿",
+  "パイナップル",
+  "ブルーベリー",
+  "ジャム",
+  "ピーナッツバター",
+  "チョコレート",
+  "レーズン",
+  "ナッツ",
 ];
 
 //　カウンターのimage
@@ -247,16 +268,36 @@ List<String> _vegetableImageList = [
   "No_image.png",
   "No_image.png",
   "No_image.png",
+
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
+  "No_image.png",
 ];
 
-class Seasoning extends StatefulWidget {
-  const Seasoning({Key? key}) : super(key: key);
+class DessertFood extends StatefulWidget {
+  const DessertFood({Key? key}) : super(key: key);
 
   @override
-  State<Seasoning> createState() => _SeasoningState();
+  State<DessertFood> createState() => _DessertFoodState();
 }
 
-class _SeasoningState extends State<Seasoning> {
+class _DessertFoodState extends State<DessertFood> {
   // final prefs = SharedPreferences.getInstance();
 
   int _counter = 0;
@@ -283,6 +324,8 @@ class _SeasoningState extends State<Seasoning> {
     //　調味料 24
     0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0,
 
+    //　フルーツ・ジャム　19
+    0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0,
   ];
 
   @override
@@ -329,7 +372,7 @@ class _SeasoningState extends State<Seasoning> {
               crossAxisCount: 3,
             ),
             // itemCount: _testList.length,
-            itemCount: 15,
+            itemCount: 19,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 padding: EdgeInsets.all(4),
@@ -357,7 +400,7 @@ class _SeasoningState extends State<Seasoning> {
                                   child: Opacity(
                                     opacity: 0.8,
                                     child: Image.asset(
-                                      'assets/lomenu-food/'+ _vegetableImageList[index + 87],
+                                      'assets/lomenu-food/'+ _vegetableImageList[index + 111],
                                     ),
                                   )),
                               Column(
@@ -377,14 +420,14 @@ class _SeasoningState extends State<Seasoning> {
                                                     await SharedPreferences
                                                         .getInstance();
                                                     prefs.setInt(
-                                                        _testList[index + 87],
-                                                        _kosu[index + 87]);
+                                                        _testList[index + 111],
+                                                        _kosu[index + 111]);
                                                   }
 
                                                   setState(() {
-                                                    if (_kosu[index + 87] != 0) {
-                                                      _kosu[index + 87] = decrement(
-                                                          _kosu[index + 87]);
+                                                    if (_kosu[index + 111] != 0) {
+                                                      _kosu[index + 111] = decrement(
+                                                          _kosu[index + 111]);
                                                       _setPlefItem();
                                                     } else {}
                                                   });
@@ -398,14 +441,14 @@ class _SeasoningState extends State<Seasoning> {
                                                     await SharedPreferences
                                                         .getInstance();
                                                     prefs.setInt(
-                                                        _testList[index + 87],
-                                                        _kosu[index + 87]);
+                                                        _testList[index + 111],
+                                                        _kosu[index + 111]);
                                                   }
 
                                                   setState(() {
-                                                    if (_kosu[index + 87] != 99) {
-                                                      _kosu[index + 87] = increment(
-                                                          _kosu[index + 87]);
+                                                    if (_kosu[index + 111] != 99) {
+                                                      _kosu[index + 111] = increment(
+                                                          _kosu[index + 111]);
                                                     }
                                                     _setPlefItem();
                                                   });
@@ -420,7 +463,7 @@ class _SeasoningState extends State<Seasoning> {
                               )
                             ],
                           )),
-                      Expanded(flex: 1,child: Text(_kosu[index + 87].toString())),
+                      Expanded(flex: 1,child: Text(_kosu[index + 111].toString())),
                       Expanded(
                           flex: 1,
                           child: Container(
@@ -428,7 +471,7 @@ class _SeasoningState extends State<Seasoning> {
                                 color: Colors.white,
                                 child: Center(
                                     child: Text(
-                                      _testList.elementAt(index + 87),
+                                      _testList.elementAt(index + 111),
                                       textAlign: TextAlign.center,
                                     )),
                               ))),

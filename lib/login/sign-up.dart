@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../home.dart';
-import '../mypage.dart';
+import '../mypage/mypage.dart';
 import 'login.dart';
 
 class SignupPage extends StatefulWidget {

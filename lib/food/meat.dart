@@ -1,8 +1,26 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
-//　食材のリスト
-List<String> _foodListMeat = [
+//食材のリスト
+List<String> _testList = [
+  // 野菜　種類:15
+  '玉ねぎ',
+  'じゃがいも',
+  'にんじん',
+  'キャベツ',
+  '白菜',
+  'ピーマン',
+  'トマト',
+  'きゅうり',
+  '大根',
+  'ナス',
+  'かぼちゃ',
+  'ねぎ',
+  "しょうが",
+  "にんにく",
+  "ブロッコリー",
+
+  // 肉 種類:15
   '鶏もも肉',
   '鶏むね肉',
   '鶏ささみ',
@@ -19,16 +37,52 @@ List<String> _foodListMeat = [
   "鶏ミンチ",
   "豚ミンチ",
   "牛ミンチ",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V"
+
+  // 魚 種類:24
+  "鮭",
+  "さば",
+  "ぶり",
+  "たら",
+  "アジ",
+  "さんま",
+  "イワシ",
+  "まぐろ",
+  "たい",
+  "かれい",
+  "ひらめ",
+  "イカ",
+  "たこ",
+  "えび",
+  "かに",
+  "あさり",
+  "しじみ",
+  "ホタテ",
+  "アワビ",
+  "かき",
+  "しらす",
+  "ちりめんじゃこ",
+  "たらこ",
+  "いくら",
 ];
 
 //　カウンターのimage
-List<String> _meatImageList = [
+List<String> _vegetableImageList = [
+  "lomenu-1-1-onion.jpeg",
+  "lomenu-1-2-potato.jpeg",
+  "lomenu-1-3-carrot.jpeg",
+  "lomenu-1-4-cabbage.png",
+  "lomenu-1-5-Chinese-cabbage.jpeg",
+  "lomenu-1-6-piman.png",
+  "lomenu-1-7-tomato.jpeg",
+  "lomenu-1-8-cucumber.jpeg",
+  "lomenu-1-9-japanese-white-radish.jpeg",
+  "lomenu-1-10-eggplant.jpeg",
+  "lomenu-1-11-pumpkin.jpeg",
+  "lomenu-1-12-japanese-leek.jpeg",
+  "lomenu-1-13-ginger.png",
+  "lomenu-1-14-garlic.png",
+  "lomenu-1-15-broccoli.jpeg",
+
   "lomenu-2-1-tori-momo.png",
   "lomenu-2-2-tori-mune.png",
   "lomenu-2-3-tori-sasami.png",
@@ -44,14 +98,32 @@ List<String> _meatImageList = [
   "lomenu-2-13-usi-hire.png",
   "lomenu-2-14-hikiniku-chicken.png",
   "lomenu-2-15-hikiniku-pork.png",
+  "lomenu-2-15-hikiniku-pork.png",
 
-  "lomenu-1-6-piman.png",
-  "lomenu-1-6-piman.png",
-  "lomenu-1-6-piman.png",
-  "lomenu-1-6-piman.png",
-  "lomenu-1-6-piman.png",
-  "lomenu-1-6-piman.png",
-  "lomenu-1-6-piman.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-12-squid.png",
+  "lomenu-3-13-octopus.png",
+  "lomenu-3-14-shrimp.png",
+  "lomenu-3-15-crab.png",
+  "lomenu-3-16-kai.png",
+  "lomenu-3-16-kai.png",
+  "lomenu-3-16-kai.png",
+  "lomenu-3-16-kai.png",
+  "lomenu-3-16-kai.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
+  "lomenu-3-1-fish.png",
 ];
 
 class Meatform extends StatefulWidget {
@@ -62,79 +134,76 @@ class Meatform extends StatefulWidget {
 }
 
 class _MeatformState extends State<Meatform> {
-  int _counterMeat = 0;
+  // final prefs = SharedPreferences.getInstance();
+
+  int _counter = 0;
 
   String ok = "no";
 
-  //　食材の個数のリスト
-  List<int> _MeatNumber = [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+  //食材の個数のリスト
+  List<int> _kosu = [
+    // 野菜 15
+    0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,
+
+    // 肉 15
+    0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 0,
+
+    // 魚 24
+    0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0,
+
+    // 主食
+
+    // 乳製品
+
+    //　調味料
+
   ];
 
   @override
   void initState() {
     super.initState();
     Future(() async {
-      _counterMeat = 0;
+      _counter = 0;
       final prefs = await SharedPreferences.getInstance();
+
       setState(() {
-        _MeatNumber.clear();
-        for (var i = 0; i <= _foodListMeat.length - 1; i++) {
-          if (prefs.getInt(_foodListMeat[i]) == 0) {
-            prefs.setInt(_foodListMeat[i], 0);
-            _MeatNumber.add(0);
+        _kosu.clear();
+        for (var i = 0; i <= _testList.length - 1; i++) {
+          if (prefs.getInt(_testList[i]) == 0) {
+            prefs.setInt(_testList[i], 0);
+            _kosu.add(0);
           } else {
-            _counterMeat = prefs.getInt(_foodListMeat[i]) ?? 0;
-            _MeatNumber.add(_counterMeat);
+            _counter = prefs.getInt(_testList[i]) ?? 0;
+            _kosu.add(_counter);
           }
         }
       });
     });
   }
 
+  //-1
   int decrement(int index) {
     return index - 1;
   }
 
+  //+1
   int increment(int index) {
     return index + 1;
   }
 
   @override
   Widget build(BuildContext context) {
+    print("####################");
+    print(_counter);
+    print(_kosu);
+    print("####################");
     return Scaffold(
         body: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3,
             ),
-            itemCount: _foodListMeat.length,
+            // itemCount: _testList.length,
+            itemCount: 16,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 padding: EdgeInsets.all(4),
@@ -151,7 +220,7 @@ class _MeatformState extends State<Meatform> {
                     ],
                     color: Colors.white,
                   ),
-                  // elevation: 15,
+                  // elevation: 10,
                   child: Column(
                     children: [
                       Expanded(
@@ -160,11 +229,11 @@ class _MeatformState extends State<Meatform> {
                             children: [
                               Center(
                                   child: Opacity(
-                                opacity: 0.8,
-                                child: Image.asset(
-                                  'assets/lomenu-food/' + _meatImageList[index],
-                                ),
-                              )),
+                                    opacity: 0.8,
+                                    child: Image.asset(
+                                      'assets/lomenu-food/'+ _vegetableImageList[index + 15],
+                                    ),
+                                  )),
                               Column(
                                 children: [
                                   Expanded(flex: 3, child: Container()),
@@ -173,54 +242,44 @@ class _MeatformState extends State<Meatform> {
                                       child: Center(
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.center,
+                                          MainAxisAlignment.center,
                                           children: [
                                             IconButton(
                                                 onPressed: () {
                                                   _setPlefItem() async {
                                                     final prefs =
-                                                        await SharedPreferences
-                                                            .getInstance();
+                                                    await SharedPreferences
+                                                        .getInstance();
                                                     prefs.setInt(
-                                                        _foodListMeat[index],
-                                                        _MeatNumber[index]);
+                                                        _testList[index + 15],
+                                                        _kosu[index + 15]);
                                                   }
 
                                                   setState(() {
-                                                    if (_MeatNumber[index] !=
-                                                        0) {
-                                                      _MeatNumber[index] =
-                                                          decrement(_MeatNumber[
-                                                              index]);
+                                                    if (_kosu[index + 15] != 0) {
+                                                      _kosu[index + 15] = decrement(
+                                                          _kosu[index + 15]);
                                                       _setPlefItem();
                                                     } else {}
                                                   });
                                                 },
                                                 icon: const Icon(Icons.remove,
                                                     color: Colors.red)),
-                                            // Stack(
-                                            //   children: [
-                                            //     Text(_MeatNumber[index]
-                                            //         .toString()),
-                                            //   ],
-                                            // ),
                                             IconButton(
                                                 onPressed: () {
                                                   _setPlefItem() async {
                                                     final prefs =
-                                                        await SharedPreferences
-                                                            .getInstance();
+                                                    await SharedPreferences
+                                                        .getInstance();
                                                     prefs.setInt(
-                                                        _foodListMeat[index],
-                                                        _MeatNumber[index]);
+                                                        _testList[index + 15],
+                                                        _kosu[index + 15]);
                                                   }
 
                                                   setState(() {
-                                                    if (_MeatNumber[index] !=
-                                                        99) {
-                                                      _MeatNumber[index] =
-                                                          increment(_MeatNumber[
-                                                              index]);
+                                                    if (_kosu[index + 15] != 99) {
+                                                      _kosu[index + 15] = increment(
+                                                          _kosu[index + 15]);
                                                     }
                                                     _setPlefItem();
                                                   });
@@ -235,20 +294,18 @@ class _MeatformState extends State<Meatform> {
                               )
                             ],
                           )),
-                      Expanded(
-                        flex: 1,
-                        child: Text(_MeatNumber[index].toString()),
-                      ),
+                      Expanded(flex: 1,child: Text(_kosu[index + 15].toString())),
                       Expanded(
                           flex: 1,
                           child: Container(
-                            color: Colors.white,
-                            child: Center(
-                                child: Text(
-                              _foodListMeat.elementAt(index),
-                              textAlign: TextAlign.center,
-                            )),
-                          )),
+                              child: Container(
+                                color: Colors.white,
+                                child: Center(
+                                    child: Text(
+                                      _testList.elementAt(index + 15),
+                                      textAlign: TextAlign.center,
+                                    )),
+                              ))),
                     ],
                   ),
                 ),
