@@ -1,6 +1,10 @@
-# lomenu
+# LOmenu
+食材をスマホで管理し、家にある食材を使った献立のレシピを提案するスマホアプリ
 
-A new Flutter project.
+## 開発目的
+
+
+## 
 
 ## Getting Started
 
