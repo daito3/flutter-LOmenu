@@ -1,4 +1,4 @@
-[![Lomenu Demo](https://github.com/daito3/flutter-LOmenu/assets/103909922/aa96d9d6-e073-47ad-877b-f28748656d57)](https://youtu.be/NBHPX35-V9Y)
+[![Lomenu Demo](https://github.com/daito3/flutter-LOmenu/assets/103909922/751d504a-2fa5-4983-8a0c-9b1c257a865b)](https://www.youtube.com/watch?v=5aKI900iGVo&t=1336s)
 # LOmenu
 食材をスマホで管理し、家にある食材を使った献立のレシピを提案するスマホアプリ
 
