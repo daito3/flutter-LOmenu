@@ -1,8 +1,7 @@
-[![Lomenu Demo](https://github-production-user-asset-6210df.s3.amazonaws.com/103909922/246010855-751d504a-2fa5-4983-8a0c-9b1c257a865b.png)](https://youtu.be/NBHPX35-V9Y)
-# LOmenu
+# LOmenu とは
 食材をスマホで管理し、家にある食材を使った献立のレシピを提案するスマホアプリ
-
-
+### デモ動画
+[![Lomenu Demo](https://github-production-user-asset-6210df.s3.amazonaws.com/103909922/246010855-751d504a-2fa5-4983-8a0c-9b1c257a865b.png)](https://youtu.be/NBHPX35-V9Y)
 
 ## 開発目的
 ### 食材の破棄を無くす 
@@ -14,6 +13,10 @@
 
 
 ## 機能一覧
+- 食材記録機能
+- レシピ作成機能
+- 献立レシピ提案機能
+- Login機能
 
 ## Getting Started
 
