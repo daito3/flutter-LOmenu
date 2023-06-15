@@ -38,7 +38,7 @@
 
 ## 開発環境
 - アプリ開発　flutter(Dart)
-- データベース　firebase
+- データベース　firebase（Authentication,Firestore,Storage）
 - コード管理　Github
 - アイコンデザイン　Illustrator・Photoshop
 
